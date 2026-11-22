@@ -31,7 +31,7 @@
   </div>
 
   <!-- Grilla mensual de 7 columnas × 5 o 6 filas -->
-  <div class="grid">
+  <div class="grid" style="height: {{gridHeight}}px;">
     <div
       class="day-cell"
       style="height: {{cellHeight}}px;"

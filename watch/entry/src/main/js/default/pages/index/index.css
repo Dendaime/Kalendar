@@ -179,6 +179,7 @@
 
 .panel-events {
   width: 360px;
+  height: 96px;
   margin-top: 6px;
   flex-direction: column;
 }

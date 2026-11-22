@@ -24,6 +24,7 @@ export default {
     headerPadTop: 8,
     weekdayHeight: 24,
     dayNumSize: 17,
+    gridHeight: 240,
     cellHeight: 40,
     badgeSize: 28,
     badgeRadius: 14,
@@ -98,6 +99,7 @@ export default {
     );
     this.monthTitle = grid.title;
     this.cellHeight = grid.cellHeight;
+    this.gridHeight = grid.rowCount * grid.cellHeight;
     this.badgeSize = grid.badgeSize;
     this.badgeRadius = grid.badgeRadius;
     this.cells = grid.cells;

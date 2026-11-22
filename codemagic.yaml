@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 30
     instance_type: mac_mini_m2
     environment:
-      xcode: 15.4
+      xcode: latest
     scripts:
       - name: Instalar XcodeGen y generar proyecto Xcode
         script: |

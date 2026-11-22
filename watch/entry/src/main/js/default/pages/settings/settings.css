@@ -8,8 +8,8 @@
 
 .header {
   width: 408px;
-  height: 64px;
-  padding-top: 10px;
+  height: 60px;
+  padding-top: 8px;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -17,7 +17,7 @@
 
 .back-btn {
   width: 68px;
-  height: 54px;
+  height: 50px;
   align-items: center;
   justify-content: center;
 }
@@ -31,33 +31,44 @@
   font-size: 24px;
 }
 
-.section {
+.section-themes {
   width: 384px;
-  margin-top: 6px;
+  height: 142px;
+  margin-top: 4px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.section-modes {
+  width: 384px;
+  height: 234px;
+  margin-top: 4px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
 .section-label {
+  width: 380px;
+  height: 24px;
   font-size: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   margin-left: 4px;
 }
 
-.swatch-grid {
+.swatch-row {
   width: 384px;
+  height: 54px;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
 .swatch-item {
   width: 120px;
-  height: 48px;
+  height: 46px;
   border-radius: 14px;
-  margin-bottom: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -69,6 +80,7 @@
 
 .mode-list {
   width: 384px;
+  height: 204px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -76,9 +88,9 @@
 
 .mode-row {
   width: 384px;
-  height: 62px;
+  height: 60px;
   border-radius: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   flex-direction: column;

@@ -11,7 +11,8 @@ import {
 
 export default {
   data: {
-    themes: THEMES,
+    themeRow0: THEMES.slice(0, 3),
+    themeRow1: THEMES.slice(3, 6),
     dayModes: DAY_VIEW_MODES,
     activeThemeId: DEFAULT_THEME_ID,
     activeModeId: DEFAULT_DAY_VIEW_MODE,

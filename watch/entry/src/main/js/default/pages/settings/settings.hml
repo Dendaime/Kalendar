@@ -6,13 +6,23 @@
     <text class="header-title" style="color: {{theme.textPrimary}};">Ajustes</text>
   </div>
 
-  <!-- Selector de color de fondo -->
-  <div class="section">
+  <!-- Selector de color de fondo (2 filas explícitas de 3) -->
+  <div class="section-themes">
     <text class="section-label" style="color: {{theme.textSecondary}};">Color de fondo</text>
-    <div class="swatch-grid">
+    <div class="swatch-row">
       <div
         class="swatch-item"
-        for="{{themes}}"
+        for="{{themeRow0}}"
+        style="background-color: {{$item.bg}}; border-color: {{$item.id === activeThemeId ? theme.accent : $item.border}}; border-width: {{$item.id === activeThemeId ? 3 : 1}}px;"
+        onclick="selectTheme($item.id)"
+      >
+        <text class="swatch-name" style="color: {{$item.textPrimary}};">{{$item.name}}</text>
+      </div>
+    </div>
+    <div class="swatch-row">
+      <div
+        class="swatch-item"
+        for="{{themeRow1}}"
         style="background-color: {{$item.bg}}; border-color: {{$item.id === activeThemeId ? theme.accent : $item.border}}; border-width: {{$item.id === activeThemeId ? 3 : 1}}px;"
         onclick="selectTheme($item.id)"
       >
@@ -22,7 +32,7 @@
   </div>
 
   <!-- Selector de vista al tocar un día -->
-  <div class="section">
+  <div class="section-modes">
     <text class="section-label" style="color: {{theme.textSecondary}};">Al seleccionar un día</text>
     <div class="mode-list">
       <div

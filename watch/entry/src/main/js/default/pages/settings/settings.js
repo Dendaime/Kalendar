@@ -34,11 +34,21 @@ export default {
       this.backSelectedDate = this.selectedDate;
     }
 
+    if (this.themeId && typeof this.themeId === 'string') {
+      this.activeThemeId = this.themeId;
+      this.theme = getThemeById(this.themeId);
+    }
+    if (this.dayViewModeParam && typeof this.dayViewModeParam === 'string') {
+      this.activeModeId = this.dayViewModeParam;
+    }
+
     var self = this;
     loadPreferences(function (prefs) {
-      self.activeThemeId = prefs.themeId;
-      self.activeModeId = prefs.dayViewMode;
-      self.theme = getThemeById(prefs.themeId);
+      var resolvedThemeId = (self.themeId && typeof self.themeId === 'string') ? self.themeId : prefs.themeId;
+      var resolvedMode = (self.dayViewModeParam && typeof self.dayViewModeParam === 'string') ? self.dayViewModeParam : prefs.dayViewMode;
+      self.activeThemeId = resolvedThemeId;
+      self.activeModeId = resolvedMode;
+      self.theme = getThemeById(resolvedThemeId);
     });
 
     loadEventsPayload(function (payload, source) {

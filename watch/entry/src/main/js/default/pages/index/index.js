@@ -213,7 +213,9 @@ export default {
       params: {
         dateKey: cell.dateKey,
         returnYear: cell.year,
-        returnMonth: cell.monthIndex
+        returnMonth: cell.monthIndex,
+        themeId: this.theme.id,
+        dayViewModeParam: this.dayViewMode
       }
     });
   },
@@ -224,7 +226,9 @@ export default {
       params: {
         dateKey: this.selectedKey,
         returnYear: this.currentYear,
-        returnMonth: this.currentMonth
+        returnMonth: this.currentMonth,
+        themeId: this.theme.id,
+        dayViewModeParam: this.dayViewMode
       }
     });
   },
@@ -235,7 +239,9 @@ export default {
       params: {
         returnYear: this.currentYear,
         returnMonth: this.currentMonth,
-        selectedDate: this.selectedKey
+        selectedDate: this.selectedKey,
+        themeId: this.theme.id,
+        dayViewModeParam: this.dayViewMode
       }
     });
   },

@@ -11,6 +11,8 @@ import { DEFAULT_THEME_ID, getThemeById } from '../../common/theme.js';
 export default {
   data: {
     theme: getThemeById(DEFAULT_THEME_ID),
+    activeThemeId: DEFAULT_THEME_ID,
+    activeMode: 'panel',
     isTimeline: false,
     selectedDateKey: '',
     backYear: 2026,
@@ -38,10 +40,23 @@ export default {
       this.backMonth = parsed.monthIndex;
     }
 
+    if (this.themeId && typeof this.themeId === 'string') {
+      this.activeThemeId = this.themeId;
+      this.theme = getThemeById(this.themeId);
+    }
+    if (this.dayViewModeParam && typeof this.dayViewModeParam === 'string') {
+      this.activeMode = this.dayViewModeParam;
+      this.isTimeline = this.dayViewModeParam === 'timeline';
+    }
+
     var self = this;
     loadPreferences(function (prefs) {
-      self.theme = getThemeById(prefs.themeId);
-      self.isTimeline = prefs.dayViewMode === 'timeline';
+      var resolvedThemeId = (self.themeId && typeof self.themeId === 'string') ? self.themeId : prefs.themeId;
+      var resolvedMode = (self.dayViewModeParam && typeof self.dayViewModeParam === 'string') ? self.dayViewModeParam : prefs.dayViewMode;
+      self.activeThemeId = resolvedThemeId;
+      self.activeMode = resolvedMode;
+      self.theme = getThemeById(resolvedThemeId);
+      self.isTimeline = resolvedMode === 'timeline';
 
       loadEventsPayload(function (payload) {
         var list = (payload && payload.events) ? payload.events : [];
@@ -95,7 +110,9 @@ export default {
       params: {
         year: this.backYear,
         month: this.backMonth,
-        selectedDate: this.selectedDateKey
+        selectedDate: this.selectedDateKey,
+        themeId: this.activeThemeId,
+        dayViewModeParam: this.activeMode
       }
     });
   },

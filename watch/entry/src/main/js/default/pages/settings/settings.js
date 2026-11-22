@@ -46,7 +46,11 @@ export default {
     });
   },
 
-  selectTheme(themeId) {
+  selectTheme(itemOrId) {
+    var themeId = (itemOrId && typeof itemOrId === 'object') ? itemOrId.id : itemOrId;
+    if (!themeId) {
+      return;
+    }
     this.activeThemeId = themeId;
     this.theme = getThemeById(themeId);
     savePreferences({
@@ -55,7 +59,11 @@ export default {
     });
   },
 
-  selectDayMode(modeId) {
+  selectDayMode(itemOrId) {
+    var modeId = (itemOrId && typeof itemOrId === 'object') ? itemOrId.id : itemOrId;
+    if (!modeId) {
+      return;
+    }
     this.activeModeId = modeId;
     savePreferences({
       themeId: this.activeThemeId,
@@ -69,7 +77,9 @@ export default {
       params: {
         year: this.backYear,
         month: this.backMonth,
-        selectedDate: this.backSelectedDate
+        selectedDate: this.backSelectedDate,
+        themeId: this.activeThemeId,
+        dayViewModeParam: this.activeModeId
       }
     });
   },

@@ -1,5 +1,6 @@
 // Capa de caché offline sobre @system.storage para HarmonyOS Lite Wearable.
-// Persiste tanto el payload JSON de eventos como las preferencias de tema y vista diaria.
+// Mantiene además una caché en memoria para garantizar cambios instantáneos
+// entre páginas tanto en el Previewer como en el reloj físico.
 
 import storage from '@system.storage';
 import { createMockPayload } from './mockEvents.js';
@@ -13,7 +14,16 @@ import {
 var EVENTS_STORAGE_KEY = 'kalendar_events_v1';
 var PREFS_STORAGE_KEY = 'kalendar_prefs_v1';
 
+var memoryPayload = null;
+var memoryPayloadSource = 'mock';
+var memoryPrefs = null;
+
 export function loadEventsPayload(callback) {
+  if (memoryPayload) {
+    callback(memoryPayload, memoryPayloadSource);
+    return;
+  }
+
   try {
     storage.get({
       key: EVENTS_STORAGE_KEY,
@@ -23,7 +33,9 @@ export function loadEventsPayload(callback) {
           try {
             var parsed = JSON.parse(raw);
             if (parsed && parsed.events && parsed.events.length >= 0) {
-              callback(parsed, 'storage');
+              memoryPayload = parsed;
+              memoryPayloadSource = parsed.source === 'iphone' ? 'storage' : 'mock';
+              callback(parsed, memoryPayloadSource);
               return;
             }
           } catch (e) {
@@ -31,20 +43,30 @@ export function loadEventsPayload(callback) {
           }
         }
         var mockPayload = createMockPayload(new Date());
+        memoryPayload = mockPayload;
+        memoryPayloadSource = 'mock';
         saveEventsPayload(mockPayload, function () {
           callback(mockPayload, 'mock');
         });
       },
       fail: function () {
-        callback(createMockPayload(new Date()), 'mock');
+        var mockPayload = createMockPayload(new Date());
+        memoryPayload = mockPayload;
+        memoryPayloadSource = 'mock';
+        callback(mockPayload, 'mock');
       }
     });
   } catch (err) {
-    callback(createMockPayload(new Date()), 'mock');
+    var mockPayload = createMockPayload(new Date());
+    memoryPayload = mockPayload;
+    memoryPayloadSource = 'mock';
+    callback(mockPayload, 'mock');
   }
 }
 
 export function saveEventsPayload(payload, onDone) {
+  memoryPayload = payload;
+  memoryPayloadSource = (payload && payload.source === 'iphone') ? 'storage' : 'mock';
   try {
     storage.set({
       key: EVENTS_STORAGE_KEY,
@@ -68,6 +90,14 @@ export function saveEventsPayload(payload, onDone) {
 }
 
 export function loadPreferences(callback) {
+  if (memoryPrefs) {
+    callback({
+      themeId: memoryPrefs.themeId,
+      dayViewMode: memoryPrefs.dayViewMode
+    });
+    return;
+  }
+
   var defaults = {
     themeId: DEFAULT_THEME_ID,
     dayViewMode: DEFAULT_DAY_VIEW_MODE
@@ -85,22 +115,26 @@ export function loadPreferences(callback) {
             var mode = (parsed && isValidDayViewMode(parsed.dayViewMode))
               ? parsed.dayViewMode
               : DEFAULT_DAY_VIEW_MODE;
-            callback({
+            memoryPrefs = {
               themeId: theme.id,
               dayViewMode: mode
-            });
+            };
+            callback(memoryPrefs);
             return;
           } catch (e) {
             console.warn('Kalendar prefs inválidas, usando defaults');
           }
         }
+        memoryPrefs = defaults;
         callback(defaults);
       },
       fail: function () {
+        memoryPrefs = defaults;
         callback(defaults);
       }
     });
   } catch (err) {
+    memoryPrefs = defaults;
     callback(defaults);
   }
 }
@@ -112,6 +146,8 @@ export function savePreferences(prefs, onDone) {
       ? prefs.dayViewMode
       : DEFAULT_DAY_VIEW_MODE
   };
+
+  memoryPrefs = safe;
 
   try {
     storage.set({

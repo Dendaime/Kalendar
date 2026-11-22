@@ -14,7 +14,7 @@
         class="swatch-item"
         for="{{themeRow0}}"
         style="background-color: {{$item.bg}}; border-color: {{$item.id === activeThemeId ? theme.accent : $item.border}}; border-width: {{$item.id === activeThemeId ? 3 : 1}}px;"
-        onclick="selectTheme($item.id)"
+        onclick="selectTheme($item)"
       >
         <text class="swatch-name" style="color: {{$item.textPrimary}};">{{$item.name}}</text>
       </div>
@@ -24,7 +24,7 @@
         class="swatch-item"
         for="{{themeRow1}}"
         style="background-color: {{$item.bg}}; border-color: {{$item.id === activeThemeId ? theme.accent : $item.border}}; border-width: {{$item.id === activeThemeId ? 3 : 1}}px;"
-        onclick="selectTheme($item.id)"
+        onclick="selectTheme($item)"
       >
         <text class="swatch-name" style="color: {{$item.textPrimary}};">{{$item.name}}</text>
       </div>
@@ -39,7 +39,7 @@
         class="mode-row"
         for="{{dayModes}}"
         style="background-color: {{$item.id === activeModeId ? theme.selectedBg : theme.surface}}; border-color: {{$item.id === activeModeId ? theme.accent : theme.border}}; border-width: {{$item.id === activeModeId ? 2 : 1}}px;"
-        onclick="selectDayMode($item.id)"
+        onclick="selectDayMode($item)"
       >
         <text
           class="mode-name"

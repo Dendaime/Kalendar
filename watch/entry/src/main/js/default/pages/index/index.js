@@ -62,14 +62,28 @@ export default {
       this.selectedKey = this.todayKey;
     }
 
+    if (this.themeId && typeof this.themeId === 'string') {
+      this.theme = getThemeById(this.themeId);
+    }
+    if (this.dayViewModeParam && typeof this.dayViewModeParam === 'string') {
+      this.dayViewMode = this.dayViewModeParam;
+      this.isPanelMode = this.dayViewModeParam === 'panel';
+      this.headerHeight = this.isPanelMode ? 54 : 66;
+      this.headerPadTop = this.isPanelMode ? 8 : 12;
+      this.weekdayHeight = this.isPanelMode ? 24 : 30;
+      this.dayNumSize = this.isPanelMode ? 17 : 21;
+    }
+
     // Render inicial síncrono para que el Previewer muestre la grilla de inmediato
     this.renderMonth();
 
     var self = this;
     loadPreferences(function (prefs) {
-      self.theme = getThemeById(prefs.themeId);
-      self.dayViewMode = prefs.dayViewMode;
-      self.isPanelMode = prefs.dayViewMode === 'panel';
+      var activeThemeId = (self.themeId && typeof self.themeId === 'string') ? self.themeId : prefs.themeId;
+      var activeMode = (self.dayViewModeParam && typeof self.dayViewModeParam === 'string') ? self.dayViewModeParam : prefs.dayViewMode;
+      self.theme = getThemeById(activeThemeId);
+      self.dayViewMode = activeMode;
+      self.isPanelMode = activeMode === 'panel';
       self.headerHeight = self.isPanelMode ? 54 : 66;
       self.headerPadTop = self.isPanelMode ? 8 : 12;
       self.weekdayHeight = self.isPanelMode ? 24 : 30;

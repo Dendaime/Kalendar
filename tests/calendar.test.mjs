@@ -18,6 +18,11 @@ import {
   getThemeById,
   isValidDayViewMode
 } from '../watch/entry/src/main/js/default/common/theme.js';
+import {
+  formatSyncLabel,
+  processIncomingMessage,
+  resetTransfers
+} from '../watch/entry/src/main/js/default/common/syncProtocol.js';
 
 test('formatDateKey and parseDateKey round-trip', () => {
   const key = formatDateKey(2026, 10, 5);
@@ -114,4 +119,44 @@ test('theme palettes and day view mode validation', () => {
   assert.equal(isValidDayViewMode('cards'), true);
   assert.equal(isValidDayViewMode('timeline'), true);
   assert.equal(isValidDayViewMode('invalid'), false);
+});
+
+test('syncProtocol handles single-packet and out-of-order chunked JSON payloads', () => {
+  resetTransfers();
+
+  // Single packet
+  const single = processIncomingMessage(JSON.stringify({
+    version: 1,
+    syncedAt: '2026-11-22T18:45:00.000Z',
+    events: [{ title: 'Reunión', date: '2026-11-22', startTime: '10:00', color: '#0A84FF' }]
+  }));
+  assert.equal(single.status, 'complete');
+  assert.equal(single.payload.source, 'iphone');
+  assert.equal(single.payload.events.length, 1);
+  assert.equal(formatSyncLabel(single.payload, 'storage'), 'iPhone 11-22 18:45 · 1 evento');
+
+  // Chunked out-of-order
+  const full = JSON.stringify({
+    version: 1,
+    syncedAt: '2026-11-22T19:00:00.000Z',
+    events: [
+      { id: 'a', title: 'Evento A', date: '2026-11-23', startTime: '09:00', color: '#30D158' },
+      { id: 'b', title: 'Evento B', date: '2026-11-24', allDay: true, color: '#FF9F0A' }
+    ]
+  });
+  const mid = Math.floor(full.length / 2);
+  const p2 = processIncomingMessage(JSON.stringify({
+    type: 'chunk', transferId: 't1', index: 1, total: 2, data: full.slice(mid)
+  }));
+  assert.equal(p2.status, 'partial');
+  assert.equal(p2.received, 1);
+
+  const p1 = processIncomingMessage(JSON.stringify({
+    type: 'chunk', transferId: 't1', index: 0, total: 2, data: full.slice(0, mid)
+  }));
+  assert.equal(p1.status, 'complete');
+  assert.equal(p1.payload.events.length, 2);
+
+  // Invalid JSON
+  assert.equal(processIncomingMessage('{bad json').status, 'error');
 });

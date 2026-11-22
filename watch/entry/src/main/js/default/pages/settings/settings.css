@@ -94,3 +94,16 @@
   font-size: 15px;
   margin-top: 2px;
 }
+
+.sync-footer {
+  width: 384px;
+  height: 28px;
+  margin-top: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sync-text {
+  font-size: 14px;
+  text-align: center;
+}

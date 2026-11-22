@@ -39,4 +39,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Estado de última sincronización -->
+  <div class="sync-footer">
+    <text class="sync-text" style="color: {{theme.textSecondary}};">{{syncStatusText}}</text>
+  </div>
 </div>

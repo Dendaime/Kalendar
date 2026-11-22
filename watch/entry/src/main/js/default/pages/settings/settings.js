@@ -1,5 +1,6 @@
 import router from '@system.router';
-import { loadPreferences, savePreferences } from '../../common/storage.js';
+import { loadEventsPayload, loadPreferences, savePreferences } from '../../common/storage.js';
+import { formatSyncLabel } from '../../common/sync.js';
 import {
   DAY_VIEW_MODES,
   DEFAULT_DAY_VIEW_MODE,
@@ -15,6 +16,7 @@ export default {
     activeThemeId: DEFAULT_THEME_ID,
     activeModeId: DEFAULT_DAY_VIEW_MODE,
     theme: getThemeById(DEFAULT_THEME_ID),
+    syncStatusText: 'Cargando...',
     backYear: 2026,
     backMonth: 0,
     backSelectedDate: ''
@@ -36,6 +38,10 @@ export default {
       self.activeThemeId = prefs.themeId;
       self.activeModeId = prefs.dayViewMode;
       self.theme = getThemeById(prefs.themeId);
+    });
+
+    loadEventsPayload(function (payload, source) {
+      self.syncStatusText = formatSyncLabel(payload, source);
     });
   },
 

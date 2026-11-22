@@ -8,6 +8,7 @@ import {
   stepMonth
 } from '../../common/calendar.js';
 import { loadEventsPayload, loadPreferences } from '../../common/storage.js';
+import { startWearEngineListener, stopWearEngineListener } from '../../common/sync.js';
 import { DEFAULT_DAY_VIEW_MODE, DEFAULT_THEME_ID, getThemeById } from '../../common/theme.js';
 
 export default {
@@ -61,6 +62,18 @@ export default {
         self.renderMonth();
       });
     });
+
+    startWearEngineListener({
+      onSynced: function (payload) {
+        var list = (payload && payload.events) ? payload.events : [];
+        self.eventsByDate = groupEventsByDate(list);
+        self.renderMonth();
+      }
+    });
+  },
+
+  onDestroy() {
+    stopWearEngineListener();
   },
 
   renderMonth() {

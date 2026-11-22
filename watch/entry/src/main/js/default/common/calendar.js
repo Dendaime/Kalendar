@@ -291,6 +291,13 @@ export function buildMonthGrid(year, monthIndex, eventsByDate, todayKey, selecte
     });
   }
 
+  var week0 = cells.slice(0, 7);
+  var week1 = cells.slice(7, 14);
+  var week2 = cells.slice(14, 21);
+  var week3 = cells.slice(21, 28);
+  var week4 = cells.slice(28, 35);
+  var week5 = rowCount === 6 ? cells.slice(35, 42) : [];
+
   return {
     year: year,
     monthIndex: monthIndex,
@@ -299,6 +306,12 @@ export function buildMonthGrid(year, monthIndex, eventsByDate, todayKey, selecte
     cellHeight: cellHeight,
     badgeSize: badgeSize,
     badgeRadius: badgeRadius,
-    cells: cells
+    cells: cells,
+    week0: week0,
+    week1: week1,
+    week2: week2,
+    week3: week3,
+    week4: week4,
+    week5: week5
   };
 }

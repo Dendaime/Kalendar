@@ -100,11 +100,17 @@
 
 .grid {
   width: 392px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
   margin-top: 2px;
+}
+
+.week-row {
+  width: 392px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .day-cell {

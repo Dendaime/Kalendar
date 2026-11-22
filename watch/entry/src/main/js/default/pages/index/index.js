@@ -32,8 +32,15 @@ export default {
     selectedKey: '',
     selectedDayTitle: '',
     selectedDaySummary: '',
+    hasPreviewEvents: false,
     selectedPreviewEvents: [],
-    cells: [],
+    hasWeek5: false,
+    week0: [],
+    week1: [],
+    week2: [],
+    week3: [],
+    week4: [],
+    week5: [],
     eventsByDate: {}
   },
 
@@ -54,6 +61,9 @@ export default {
     } else {
       this.selectedKey = this.todayKey;
     }
+
+    // Render inicial síncrono para que el Previewer muestre la grilla de inmediato
+    this.renderMonth();
 
     var self = this;
     loadPreferences(function (prefs) {
@@ -102,7 +112,13 @@ export default {
     this.gridHeight = grid.rowCount * grid.cellHeight;
     this.badgeSize = grid.badgeSize;
     this.badgeRadius = grid.badgeRadius;
-    this.cells = grid.cells;
+    this.week0 = grid.week0;
+    this.week1 = grid.week1;
+    this.week2 = grid.week2;
+    this.week3 = grid.week3;
+    this.week4 = grid.week4;
+    this.week5 = grid.week5;
+    this.hasWeek5 = grid.rowCount === 6;
 
     if (this.isPanelMode) {
       this.updateSelectedPanel();
@@ -125,6 +141,7 @@ export default {
     }
 
     this.selectedPreviewEvents = preview;
+    this.hasPreviewEvents = preview.length > 0;
     if (dayEvents.length === 0) {
       this.selectedDaySummary = 'Libre';
     } else if (dayEvents.length === 1) {

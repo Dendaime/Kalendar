@@ -12,6 +12,7 @@ targets:
       - path: KalendarSync
     settings:
       base:
+        GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.dendaime.kalendar.ios
         INFOPLIST_KEY_CFBundleDisplayName: Kalendar Sync
         INFOPLIST_KEY_NSCalendarsUsageDescription: "Kalendar Sync necesita leer tus calendarios para enviarlos a tu Huawei Watch Fit 3."

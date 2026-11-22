@@ -1,6 +1,6 @@
 <div class="screen" style="background-color: {{theme.bg}};" onswipe="onSwipe">
   <!-- Encabezado de fecha con botón volver y cambio rápido de estilo de lista -->
-  <div class="header">
+  <div class="header" style="background-color: {{theme.bg}};">
     <div class="back-btn" onclick="goBack">
       <text class="back-arrow" style="color: {{theme.accent}};">&lt;</text>
     </div>
@@ -18,8 +18,16 @@
   </div>
 
   <!-- Modo Tarjetas detalladas -->
-  <list class="event-list" if="{{hasEvents && !isTimeline}}">
-    <list-item class="event-item" for="{{events}}">
+  <list
+    class="event-list"
+    style="background-color: {{theme.bg}};"
+    if="{{hasEvents && !isTimeline}}"
+  >
+    <list-item
+      class="event-item"
+      style="background-color: {{theme.bg}};"
+      for="{{events}}"
+    >
       <div class="event-card" style="background-color: {{theme.cardBg}}; border-color: {{theme.border}};">
         <div class="color-bar" style="background-color: {{$item.color}};"></div>
         <div class="event-body">
@@ -34,9 +42,17 @@
   </list>
 
   <!-- Modo Cronología compacta -->
-  <list class="event-list" if="{{hasEvents && isTimeline}}">
-    <list-item class="timeline-item" for="{{events}}">
-      <div class="timeline-row" style="border-color: {{theme.border}};">
+  <list
+    class="event-list"
+    style="background-color: {{theme.bg}};"
+    if="{{hasEvents && isTimeline}}"
+  >
+    <list-item
+      class="timeline-item"
+      style="background-color: {{theme.bg}};"
+      for="{{events}}"
+    >
+      <div class="timeline-row" style="background-color: {{theme.bg}}; border-color: {{theme.border}};">
         <text class="timeline-time" style="color: {{theme.textSecondary}};">{{$item.timeShort}}</text>
         <div class="timeline-dot" style="background-color: {{$item.color}};"></div>
         <div class="timeline-text-col">
@@ -48,7 +64,7 @@
   </list>
 
   <!-- Estado vacío -->
-  <div class="empty-wrap" if="{{!hasEvents}}">
+  <div class="empty-wrap" style="background-color: {{theme.bg}};" if="{{!hasEvents}}">
     <div class="empty-dot" style="background-color: {{theme.border}};"></div>
     <text class="empty-title" style="color: {{theme.textPrimary}};">Sin eventos</text>
     <text class="empty-sub" style="color: {{theme.textSecondary}};">Día libre en tu calendario</text>

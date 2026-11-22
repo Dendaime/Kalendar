@@ -20,6 +20,10 @@ export default {
     currentYear: 2026,
     currentMonth: 0,
     monthTitle: '',
+    headerHeight: 54,
+    headerPadTop: 8,
+    weekdayHeight: 24,
+    dayNumSize: 17,
     cellHeight: 40,
     badgeSize: 28,
     badgeRadius: 14,
@@ -55,6 +59,10 @@ export default {
       self.theme = getThemeById(prefs.themeId);
       self.dayViewMode = prefs.dayViewMode;
       self.isPanelMode = prefs.dayViewMode === 'panel';
+      self.headerHeight = self.isPanelMode ? 54 : 66;
+      self.headerPadTop = self.isPanelMode ? 8 : 12;
+      self.weekdayHeight = self.isPanelMode ? 24 : 30;
+      self.dayNumSize = self.isPanelMode ? 17 : 21;
 
       loadEventsPayload(function (payload) {
         var list = (payload && payload.events) ? payload.events : [];

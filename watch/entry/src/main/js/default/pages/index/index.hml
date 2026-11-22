@@ -1,6 +1,6 @@
 <div class="screen" style="background-color: {{theme.bg}};" onswipe="onSwipe">
   <!-- Encabezado compacto con navegación de mes y acceso a ajustes de tema/vista -->
-  <div class="{{isPanelMode ? 'header-compact' : 'header'}}">
+  <div class="header" style="height: {{headerHeight}}px; padding-top: {{headerPadTop}}px;">
     <div class="nav-btn" onclick="prevMonth">
       <text class="nav-arrow" style="color: {{theme.accent}};">&lt;</text>
     </div>
@@ -21,7 +21,7 @@
   </div>
 
   <!-- Cabecera de días de la semana: L M X J V S D -->
-  <div class="{{isPanelMode ? 'weekday-row-compact' : 'weekday-row'}}">
+  <div class="weekday-row" style="height: {{weekdayHeight}}px;">
     <div class="weekday-cell" for="{{weekdays}}">
       <text
         class="weekday-text"
@@ -43,8 +43,8 @@
         style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};"
       >
         <text
-          class="{{isPanelMode ? 'day-num-compact' : 'day-num'}}"
-          style="color: {{$item.numColor}};"
+          class="day-num"
+          style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};"
         >{{$item.day}}</text>
       </div>
       <div class="dots-row">

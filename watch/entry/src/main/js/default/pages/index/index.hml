@@ -30,82 +30,82 @@
     </div>
   </div>
 
-  <!-- Grilla mensual en filas explícitas (compatible 100% con HarmonyOS Lite Wearable) -->
+  <!-- Grilla mensual optimizada para bajo consumo de memoria en ACE Lite -->
   <div class="grid" style="height: {{gridHeight}}px;">
     <div class="week-row" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week0}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+      <div class="day-cell" for="{{week0}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
 
     <div class="week-row" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week1}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+      <div class="day-cell" for="{{week1}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
 
     <div class="week-row" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week2}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+      <div class="day-cell" for="{{week2}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
 
     <div class="week-row" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week3}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+      <div class="day-cell" for="{{week3}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
 
     <div class="week-row" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week4}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+      <div class="day-cell" for="{{week4}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
 
-    <div class="week-row" show="{{hasWeek5}}" style="height: {{cellHeight}}px;">
-      <div class="day-cell" style="height: {{cellHeight}}px;" for="{{week5}}" onclick="onDayClick($item)">
-        <div class="day-badge" style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
-          <text class="day-num" style="font-size: {{dayNumSize}}px; color: {{$item.numColor}};">{{$item.day}}</text>
+    <div class="week-row" if="{{hasWeek5}}" style="height: {{cellHeight}}px;">
+      <div class="day-cell" for="{{week5}}" onclick="onDayClick($item)">
+        <div class="day-badge" style="background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};">
+          <text class="day-num" style="color: {{$item.numColor}};">{{$item.day}}</text>
         </div>
         <div class="dots-row">
-          <div class="dot" show="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
-          <div class="dot" show="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
-          <div class="dot" show="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
+          <div class="dot" if="{{$item.dot0 !== ''}}" style="background-color: {{$item.dot0}};"></div>
+          <div class="dot" if="{{$item.dot1 !== ''}}" style="background-color: {{$item.dot1}};"></div>
+          <div class="dot" if="{{$item.dot2 !== ''}}" style="background-color: {{$item.dot2}};"></div>
         </div>
       </div>
     </div>
@@ -114,7 +114,7 @@
   <!-- Panel inferior de vista dividida (solo activo cuando dayViewMode === 'panel') -->
   <div
     class="bottom-panel"
-    show="{{isPanelMode}}"
+    if="{{isPanelMode}}"
     style="background-color: {{theme.surface}}; border-color: {{theme.border}};"
     onclick="openSelectedDayDetail"
   >
@@ -122,14 +122,14 @@
       <text class="panel-date" style="color: {{theme.textPrimary}};">{{selectedDayTitle}}</text>
       <text class="panel-count" style="color: {{theme.accent}};">{{selectedDaySummary}} &gt;</text>
     </div>
-    <div class="panel-events" show="{{hasPreviewEvents}}">
+    <div class="panel-events" if="{{hasPreviewEvents}}">
       <div class="panel-event-row" for="{{selectedPreviewEvents}}">
         <div class="panel-dot" style="background-color: {{$item.color}};"></div>
         <text class="panel-time" style="color: {{theme.textSecondary}};">{{$item.timeShort}}</text>
         <text class="panel-title" style="color: {{theme.textPrimary}};">{{$item.title}}</text>
       </div>
     </div>
-    <div class="panel-empty" show="{{!hasPreviewEvents}}">
+    <div class="panel-empty" if="{{!hasPreviewEvents}}">
       <text class="panel-empty-text" style="color: {{theme.textSecondary}};">Sin eventos para este día</text>
     </div>
   </div>

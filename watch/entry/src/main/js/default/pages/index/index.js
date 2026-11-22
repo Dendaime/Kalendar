@@ -200,10 +200,16 @@ export default {
         this.openSelectedDayDetail();
         return;
       }
+      var sameMonth = (cell.year === this.currentYear && cell.monthIndex === this.currentMonth);
+      var prevKey = this.selectedKey;
       this.selectedKey = cell.dateKey;
-      this.currentYear = cell.year;
-      this.currentMonth = cell.monthIndex;
-      this.renderMonth();
+      if (sameMonth) {
+        this.updateSelectionInCurrentMonth(prevKey, cell.dateKey);
+      } else {
+        this.currentYear = cell.year;
+        this.currentMonth = cell.monthIndex;
+        this.renderMonth();
+      }
       return;
     }
 
@@ -218,6 +224,39 @@ export default {
         dayViewModeParam: this.dayViewMode
       }
     });
+  },
+
+  updateSelectionInCurrentMonth(prevKey, nextKey) {
+    var grid = buildMonthGrid(
+      this.currentYear,
+      this.currentMonth,
+      this.eventsByDate,
+      this.todayKey,
+      nextKey,
+      {
+        compact: this.isPanelMode,
+        theme: this.theme
+      }
+    );
+    var rowNames = ['week0', 'week1', 'week2', 'week3', 'week4', 'week5'];
+    for (var r = 0; r < rowNames.length; r++) {
+      var name = rowNames[r];
+      var row = grid[name];
+      if (!row || !row.length) {
+        continue;
+      }
+      var touched = false;
+      for (var c = 0; c < row.length; c++) {
+        if (row[c].dateKey === prevKey || row[c].dateKey === nextKey) {
+          touched = true;
+          break;
+        }
+      }
+      if (touched) {
+        this[name] = row;
+      }
+    }
+    this.updateSelectedPanel();
   },
 
   openSelectedDayDetail() {

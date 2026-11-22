@@ -115,24 +115,22 @@
 
 .day-cell {
   width: 56px;
-  height: 58px;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .day-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
   align-items: center;
   justify-content: center;
 }
 
 .day-num {
-  font-size: 21px;
-  text-align: center;
-}
-
-.day-num-compact {
-  font-size: 17px;
+  font-size: 18px;
   text-align: center;
 }
 

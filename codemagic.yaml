@@ -1,0 +1,34 @@
+workflows:
+  ios-kalendar-sync-unsigned:
+    name: iOS KalendarSync (Unsigned IPA para Sideloadly/AltStore)
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 15.4
+    scripts:
+      - name: Instalar XcodeGen y generar proyecto Xcode
+        script: |
+          brew install xcodegen
+          cd ios
+          xcodegen generate
+      - name: Compilar KalendarSync (Release sin firma)
+        script: |
+          cd ios
+          xcodebuild \
+            -project KalendarSync.xcodeproj \
+            -scheme KalendarSync \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+      - name: Empaquetar .ipa sin firmar
+        script: |
+          mkdir -p ios/build/Payload
+          cp -R ios/build/DerivedData/Build/Products/Release-iphoneos/KalendarSync.app ios/build/Payload/
+          cd ios/build
+          zip -r KalendarSync-unsigned.ipa Payload
+    artifacts:
+      - ios/build/KalendarSync-unsigned.ipa

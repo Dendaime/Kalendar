@@ -1,0 +1,96 @@
+.screen {
+  width: 408px;
+  height: 480px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header {
+  width: 408px;
+  height: 64px;
+  padding-top: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.back-btn {
+  width: 68px;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-arrow {
+  font-size: 30px;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 24px;
+}
+
+.section {
+  width: 384px;
+  margin-top: 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.section-label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.swatch-grid {
+  width: 384px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.swatch-item {
+  width: 120px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.swatch-name {
+  font-size: 18px;
+  text-align: center;
+}
+
+.mode-list {
+  width: 384px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mode-row {
+  width: 384px;
+  height: 62px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mode-name {
+  font-size: 19px;
+}
+
+.mode-desc {
+  font-size: 15px;
+  margin-top: 2px;
+}

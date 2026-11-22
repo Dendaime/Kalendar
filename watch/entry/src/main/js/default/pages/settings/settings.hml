@@ -1,0 +1,42 @@
+<div class="screen" style="background-color: {{theme.bg}};" onswipe="onSwipe">
+  <div class="header">
+    <div class="back-btn" onclick="goBack">
+      <text class="back-arrow" style="color: {{theme.accent}};">&lt;</text>
+    </div>
+    <text class="header-title" style="color: {{theme.textPrimary}};">Ajustes</text>
+  </div>
+
+  <!-- Selector de color de fondo -->
+  <div class="section">
+    <text class="section-label" style="color: {{theme.textSecondary}};">Color de fondo</text>
+    <div class="swatch-grid">
+      <div
+        class="swatch-item"
+        for="{{themes}}"
+        style="background-color: {{$item.bg}}; border-color: {{$item.id === activeThemeId ? theme.accent : $item.border}}; border-width: {{$item.id === activeThemeId ? 3 : 1}}px;"
+        onclick="selectTheme($item.id)"
+      >
+        <text class="swatch-name" style="color: {{$item.textPrimary}};">{{$item.name}}</text>
+      </div>
+    </div>
+  </div>
+
+  <!-- Selector de vista al tocar un día -->
+  <div class="section">
+    <text class="section-label" style="color: {{theme.textSecondary}};">Al seleccionar un día</text>
+    <div class="mode-list">
+      <div
+        class="mode-row"
+        for="{{dayModes}}"
+        style="background-color: {{$item.id === activeModeId ? theme.selectedBg : theme.surface}}; border-color: {{$item.id === activeModeId ? theme.accent : theme.border}}; border-width: {{$item.id === activeModeId ? 2 : 1}}px;"
+        onclick="selectDayMode($item.id)"
+      >
+        <text
+          class="mode-name"
+          style="color: {{$item.id === activeModeId ? theme.selectedText : theme.textPrimary}};"
+        >{{$item.name}}</text>
+        <text class="mode-desc" style="color: {{theme.textSecondary}};">{{$item.desc}}</text>
+      </div>
+    </div>
+  </div>
+</div>

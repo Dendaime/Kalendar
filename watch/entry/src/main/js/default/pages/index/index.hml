@@ -1,0 +1,92 @@
+<div class="screen" style="background-color: {{theme.bg}};" onswipe="onSwipe">
+  <!-- Encabezado compacto con navegación de mes y acceso a ajustes de tema/vista -->
+  <div class="{{isPanelMode ? 'header-compact' : 'header'}}">
+    <div class="nav-btn" onclick="prevMonth">
+      <text class="nav-arrow" style="color: {{theme.accent}};">&lt;</text>
+    </div>
+    <div class="title-wrap" onclick="goToday">
+      <text class="month-title" style="color: {{theme.textPrimary}};">{{monthTitle}}</text>
+    </div>
+    <div class="nav-btn" onclick="nextMonth">
+      <text class="nav-arrow" style="color: {{theme.accent}};">&gt;</text>
+    </div>
+    <div class="settings-btn" onclick="openSettings">
+      <div
+        class="settings-ring"
+        style="border-color: {{theme.accent}}; background-color: {{theme.surface}};"
+      >
+        <div class="settings-core" style="background-color: {{theme.accent}};"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cabecera de días de la semana: L M X J V S D -->
+  <div class="{{isPanelMode ? 'weekday-row-compact' : 'weekday-row'}}">
+    <div class="weekday-cell" for="{{weekdays}}">
+      <text
+        class="weekday-text"
+        style="color: {{$idx >= 5 ? theme.weekendText : theme.textSecondary}};"
+      >{{$item}}</text>
+    </div>
+  </div>
+
+  <!-- Grilla mensual de 7 columnas × 5 o 6 filas -->
+  <div class="grid">
+    <div
+      class="day-cell"
+      style="height: {{cellHeight}}px;"
+      for="{{cells}}"
+      onclick="onDayClick($item)"
+    >
+      <div
+        class="day-badge"
+        style="width: {{badgeSize}}px; height: {{badgeSize}}px; border-radius: {{badgeRadius}}px; background-color: {{$item.badgeBg}}; border-width: {{$item.badgeBorderWidth}}px; border-color: {{$item.badgeBorderColor}};"
+      >
+        <text
+          class="{{isPanelMode ? 'day-num-compact' : 'day-num'}}"
+          style="color: {{$item.numColor}};"
+        >{{$item.day}}</text>
+      </div>
+      <div class="dots-row">
+        <div
+          class="dot"
+          if="{{$item.dot0 !== ''}}"
+          style="background-color: {{$item.dot0}};"
+        ></div>
+        <div
+          class="dot"
+          if="{{$item.dot1 !== ''}}"
+          style="background-color: {{$item.dot1}};"
+        ></div>
+        <div
+          class="dot"
+          if="{{$item.dot2 !== ''}}"
+          style="background-color: {{$item.dot2}};"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel inferior de vista dividida (solo activo cuando dayViewMode === 'panel') -->
+  <div
+    class="bottom-panel"
+    if="{{isPanelMode}}"
+    style="background-color: {{theme.surface}}; border-color: {{theme.border}};"
+    onclick="openSelectedDayDetail"
+  >
+    <div class="panel-header">
+      <text class="panel-date" style="color: {{theme.textPrimary}};">{{selectedDayTitle}}</text>
+      <text class="panel-count" style="color: {{theme.accent}};">{{selectedDaySummary}} &gt;</text>
+    </div>
+    <div class="panel-events" if="{{selectedPreviewEvents.length > 0}}">
+      <div class="panel-event-row" for="{{selectedPreviewEvents}}">
+        <div class="panel-dot" style="background-color: {{$item.color}};"></div>
+        <text class="panel-time" style="color: {{theme.textSecondary}};">{{$item.timeShort}}</text>
+        <text class="panel-title" style="color: {{theme.textPrimary}};">{{$item.title}}</text>
+      </div>
+    </div>
+    <div class="panel-empty" if="{{selectedPreviewEvents.length === 0}}">
+      <text class="panel-empty-text" style="color: {{theme.textSecondary}};">Sin eventos para este día</text>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+{
+  "app": {
+    "bundleName": "com.dendaime.kalendar",
+    "vendor": "dendaime",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    },
+    "apiVersion": {
+      "compatible": 6,
+      "target": 9,
+      "releaseType": "Release"
+    }
+  },
+  "deviceConfig": {
+    "default": {}
+  },
+  "module": {
+    "deviceType": [
+      "liteWearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "distroFilter": {
+      "screenShape": {
+        "policy": "include",
+        "value": [
+          "rect"
+        ]
+      },
+      "screenWindow": {
+        "policy": "include",
+        "value": [
+          "408*480"
+        ]
+      }
+    },
+    "abilities": [
+      {
+        "name": "default",
+        "icon": "$media:icon",
+        "label": "Kalendar",
+        "type": "page"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/day/day",
+          "pages/settings/settings"
+        ],
+        "name": "default"
+      }
+    ]
+  }
+}

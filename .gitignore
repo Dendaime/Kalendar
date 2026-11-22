@@ -1,0 +1,23 @@
+# DevEco Studio / HarmonyOS
+.hvigor/
+.idea/
+.gradle/
+build/
+entry/build/
+local.properties
+*.hap
+*.app
+*.cer
+*.p7b
+*.p12
+*.csr
+
+# macOS / Xcode (futuro módulo iOS)
+.DS_Store
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+
+# Node / Logs
+node_modules/
+*.log

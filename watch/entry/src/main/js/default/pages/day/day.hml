@@ -1,0 +1,56 @@
+<div class="screen" style="background-color: {{theme.bg}};" onswipe="onSwipe">
+  <!-- Encabezado de fecha con botón volver y cambio rápido de estilo de lista -->
+  <div class="header">
+    <div class="back-btn" onclick="goBack">
+      <text class="back-arrow" style="color: {{theme.accent}};">&lt;</text>
+    </div>
+    <div class="header-info">
+      <text class="date-title" style="color: {{theme.textPrimary}};">{{dateTitle}}</text>
+      <text class="event-summary" style="color: {{theme.textSecondary}};">{{summaryText}}</text>
+    </div>
+    <div
+      class="mode-pill"
+      style="background-color: {{theme.surface}}; border-color: {{theme.border}};"
+      onclick="toggleLayout"
+    >
+      <text class="mode-pill-text" style="color: {{theme.accent}};">{{isTimeline ? 'Tarj.' : 'Lista'}}</text>
+    </div>
+  </div>
+
+  <!-- Modo Tarjetas detalladas -->
+  <list class="event-list" if="{{hasEvents && !isTimeline}}">
+    <list-item class="event-item" for="{{events}}">
+      <div class="event-card" style="background-color: {{theme.cardBg}}; border-color: {{theme.border}};">
+        <div class="color-bar" style="background-color: {{$item.color}};"></div>
+        <div class="event-body">
+          <div class="event-meta">
+            <text class="event-time" style="color: {{theme.textSecondary}};">{{$item.timeLabel}}</text>
+            <text class="event-cal" style="color: {{$item.color}};">{{$item.calendar}}</text>
+          </div>
+          <text class="event-title" style="color: {{theme.textPrimary}};">{{$item.title}}</text>
+        </div>
+      </div>
+    </list-item>
+  </list>
+
+  <!-- Modo Cronología compacta -->
+  <list class="event-list" if="{{hasEvents && isTimeline}}">
+    <list-item class="timeline-item" for="{{events}}">
+      <div class="timeline-row" style="border-color: {{theme.border}};">
+        <text class="timeline-time" style="color: {{theme.textSecondary}};">{{$item.timeShort}}</text>
+        <div class="timeline-dot" style="background-color: {{$item.color}};"></div>
+        <div class="timeline-text-col">
+          <text class="timeline-title" style="color: {{theme.textPrimary}};">{{$item.title}}</text>
+          <text class="timeline-cal" style="color: {{$item.color}};">{{$item.calendar}}</text>
+        </div>
+      </div>
+    </list-item>
+  </list>
+
+  <!-- Estado vacío -->
+  <div class="empty-wrap" if="{{!hasEvents}}">
+    <div class="empty-dot" style="background-color: {{theme.border}};"></div>
+    <text class="empty-title" style="color: {{theme.textPrimary}};">Sin eventos</text>
+    <text class="empty-sub" style="color: {{theme.textSecondary}};">Día libre en tu calendario</text>
+  </div>
+</div>

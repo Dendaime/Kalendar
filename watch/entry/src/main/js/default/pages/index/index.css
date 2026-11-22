@@ -1,0 +1,222 @@
+.screen {
+  width: 408px;
+  height: 480px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header {
+  width: 400px;
+  height: 66px;
+  padding-top: 12px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-compact {
+  width: 400px;
+  height: 54px;
+  padding-top: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-btn {
+  width: 60px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow {
+  font-size: 28px;
+  text-align: center;
+}
+
+.title-wrap {
+  width: 224px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.month-title {
+  font-size: 22px;
+  text-align: center;
+}
+
+.settings-btn {
+  width: 56px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  border-width: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-core {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.weekday-row {
+  width: 392px;
+  height: 30px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weekday-row-compact {
+  width: 392px;
+  height: 24px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weekday-cell {
+  width: 56px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.weekday-text {
+  font-size: 16px;
+  text-align: center;
+}
+
+.grid {
+  width: 392px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2px;
+}
+
+.day-cell {
+  width: 56px;
+  height: 58px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-badge {
+  align-items: center;
+  justify-content: center;
+}
+
+.day-num {
+  font-size: 21px;
+  text-align: center;
+}
+
+.day-num-compact {
+  font-size: 17px;
+  text-align: center;
+}
+
+.dots-row {
+  width: 44px;
+  height: 10px;
+  margin-top: 2px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.bottom-panel {
+  width: 388px;
+  height: 142px;
+  margin-top: 8px;
+  border-radius: 20px;
+  border-width: 1px;
+  padding-top: 10px;
+  padding-left: 14px;
+  padding-right: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.panel-header {
+  width: 360px;
+  height: 28px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-date {
+  font-size: 19px;
+}
+
+.panel-count {
+  font-size: 16px;
+}
+
+.panel-events {
+  width: 360px;
+  margin-top: 6px;
+  flex-direction: column;
+}
+
+.panel-event-row {
+  width: 360px;
+  height: 30px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.panel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.panel-time {
+  width: 72px;
+  font-size: 16px;
+}
+
+.panel-title {
+  width: 268px;
+  font-size: 18px;
+  text-overflow: ellipsis;
+}
+
+.panel-empty {
+  width: 360px;
+  height: 76px;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-empty-text {
+  font-size: 17px;
+  text-align: center;
+}
